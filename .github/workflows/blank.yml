@@ -22,8 +22,7 @@ jobs:
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          photo: workflows/lp_image.jpeg
+          token: 6918872876:AAGPDUxh_m10cmVRkfcy8YoXfkuaab6RNV0
           location: '55.06904 82.90881'
           venue: '55.06904 82.90881 ШАРАГА'
           message: |
