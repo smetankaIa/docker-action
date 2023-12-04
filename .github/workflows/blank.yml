@@ -18,6 +18,19 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - run: docker build -t ghcr.io/smetankaia/python-app:1.0 .
       - run: docker push ghcr.io/smetankaia/python-app:1.0
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          photo: workflows/lp_image.jpeg
+          location: '55.06904 82.90881'
+          venue: '55.06904 82.90881 ШАРАГА'
+          message: |
+            Этот пёс ${{ github.actor }} создал commit:
+            ${{ github.event.commits[0].message }}
+            
+            В лучшем репо: ${{ github.repository }}
   deploy:
     runs-on: ubuntu-latest
     needs: [build]
@@ -29,3 +42,4 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - run: docker run ghcr.io/smetankaia/python-app:1.0
+  
