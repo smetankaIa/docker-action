@@ -21,15 +21,15 @@ jobs:
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
-          to: ${{ secrets.TELEGRAM_TO }}
+          to: 887371648
           token: 6918872876:AAGPDUxh_m10cmVRkfcy8YoXfkuaab6RNV0
           location: '55.06904 82.90881'
           venue: '55.06904 82.90881 ШАРАГА'
           message: |
-            Этот пёс ${{ github.actor }} создал commit:
+            Автоматизация питон кода сделанная ${{ github.actor }} ещё и коммит:
             ${{ github.event.commits[0].message }}
             
-            В лучшем репо: ${{ github.repository }}
+            Репоп ${{ github.repository }}
   deploy:
     runs-on: ubuntu-latest
     needs: [build]
